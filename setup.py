@@ -11,8 +11,9 @@ setuptools.setup(
            # name = packagename:function_name
            "Streamlit = openservers:setup_openstreamlit",
            "VSCode = openservers:setup_openvscode",
+           "Dagster = openservers:setup_opendagster",
        ]
    },
-   install_requires=["jupyter-server-proxy", "streamlit"],
-   data_files=[("icons", ["icons/streamlit.svg", "icons/vscode.svg"])],
+   install_requires=["jupyter-server-proxy", "streamlit", "dagster", "dagster-webserver"],
+   data_files=[("icons", ["icons/streamlit.svg", "icons/vscode.svg", "icons/dagster.svg", "icons/index.html"])],
 )
