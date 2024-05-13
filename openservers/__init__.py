@@ -22,11 +22,11 @@ def setup_openvscode():
     }
 
 def setup_opendagster():
+    command = ["dagster-webserver", "--port={port}", "--path-prefix={base_url}Dagster"]
+    
     # Use dagster-quickstart package if environmental variable for DAGSTER_PACKAGE_NAME is missing
     if getenv("DAGSTER_PACKAGE_NAME") is None:
-        command = ["dagster-webserver", "-m", "dagster_quickstart", "--port={port}"]
-    else:
-        command = ["dagster-webserver", "dev", "--port={port}"]
+        command += ["-m", "dagster_quickstart"]
 
     return {
         "command": command, 
