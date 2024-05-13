@@ -15,4 +15,9 @@ def setup_openvscode():
         "command": ["code-server", "--port={port}","--auth=none", "--disable-telemetry"], 
         "timeout": 120,
     }
-    
+
+def setup_opendagster():
+    return {
+        "command": ["dagster", "dev", "--port={port}"], 
+        "timeout": 120,
+    }
