@@ -1,3 +1,4 @@
+import subprocess
 from pathlib import Path
 
 
@@ -18,6 +19,6 @@ def setup_openvscode():
 
 def setup_opendagster():
     return {
-        "command": ["dagster", "dev", "--port={port}"], 
+        "command": ["chmod", "+x", "dagster_init.sh", "&&", "./dagster_init.sh", "{port}"], 
         "timeout": 120,
     }
