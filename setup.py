@@ -1,11 +1,11 @@
-import setuptools
+from setuptools import find_packages, setup
 
-setuptools.setup(
+setup_args = dict(
    name="jupyter-openservers",
    description="Jupyter Server Proxy for Streamlit/VScode",
    version="0.0.1",
    author="Patrick Sipple",
-   py_modules=["openservers"],
+   packages=find_packages(),
    entry_points={
        "jupyter_serverproxy_servers": [
            # name = packagename:function_name
@@ -15,4 +15,10 @@ setuptools.setup(
        ]
    },
    install_requires=["jupyter-server-proxy", "streamlit", "dagster-webserver"],
+    package_data={
+        "openservers": ["icons/*"],
+    },
 )
+
+if __name__ == "__main__":
+    setup(**setup_args)
