@@ -22,9 +22,8 @@ def setup_openvscode():
     }
 
 def setup_opendagster():
-    # Install dagster-quickstart package if environmental variable for DAGSTER_PACKAGE_NAME is missing
+    # Use dagster-quickstart package if environmental variable for DAGSTER_PACKAGE_NAME is missing
     if getenv("DAGSTER_PACKAGE_NAME") is None:
-        subprocess.run(["pip", "install", "-e", "git+https://github.com/dagster-io/dagster-quickstart.git"])
         command = ["dagster", "dev", "-m", "dagster_quickstart", "--port={port}"]
     else:
         command = ["dagster", "dev", "--port={port}"]
