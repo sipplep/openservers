@@ -18,7 +18,7 @@ setup_args = dict(
       "jupyter-server-proxy", 
       "streamlit", 
       "dagster-webserver",
-      "dagster_quickstart @ git+https://github.com/dagster-io/dagster-quickstart.git'
+      "dagster_quickstart @ git+https://github.com/dagster-io/dagster-quickstart.git",
     ],
     package_data={
         "openservers": ["icons/*"],
