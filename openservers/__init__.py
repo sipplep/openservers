@@ -1,5 +1,6 @@
 import subprocess
 from pathlib import Path
+from os import getenv
 
 ICON_PATH = Path(__file__).parent / "icons"
 
@@ -21,9 +22,15 @@ def setup_openvscode():
     }
 
 def setup_opendagster():
-    subprocess.run(["chmod", "+x", "dagster_init.sh"])
+    # Install dagster-quickstart package if environmental variable for DAGSTER_PACKAGE_NAME is missing
+    if getenv("DAGSTER_PACKAGE_NAME") is None:
+        subprocess.run(["pip", "install", "-e", "git+https://github.com/dagster-io/dagster-quickstart.git"])
+        command = ["dagster", "dev", "-m", "dagster_quickstart", "--port", f"{port}"]
+    else:
+        command = ["dagster", "dev", "--port", f"{port}"]
+
     return {
-        "command": ["./dagster_init.sh", "{port}"], 
+        "command": command, 
         "timeout": 120,
         "launcher_entry": {"icon_path": str((ICON_PATH / "dagster.svg").absolute())},
     }
