@@ -10,8 +10,8 @@ setuptools.setup(
        "jupyter_serverproxy_servers": [
            # name = packagename:function_name
            "Streamlit = openservers:setup_openstreamlit",
-           "VS Code = openservers:setup_openvscode",
-           "Dagster Dev = openservers:setup_opendagster",
+           "Code = openservers:setup_openvscode",
+           "Dagster = openservers:setup_opendagster",
        ]
    },
    install_requires=["jupyter-server-proxy", "streamlit", "dagster-webserver"],
