@@ -25,11 +25,12 @@ def setup_opendagster():
     command = ["dagster-webserver", "--port={port}", "--path-prefix={base_url}Dagster"]
     
     # Use dagster-quickstart package if environmental variable for DAGSTER_PACKAGE_NAME is missing
-    if getenv("DAGSTER_PACKAGE_NAME") is None:
-        command += ["-m", "dagster_quickstart"]
+    if getenv("DAGSTER_PACKAGE_NAME") is None and getenv("DAGSTER_WORKING_DIRECTORY") is None:
+        command = ["DAGSTER_WORKING_DIRECTORY=/repos/dagster_quickstart"] + command
 
     return {
         "command": command, 
         "timeout": 120,
         "launcher_entry": {"icon_path": str((ICON_PATH / "dagster.svg").absolute())},
     }
+    
